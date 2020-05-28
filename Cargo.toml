@@ -1,0 +1,7 @@
+[package]
+name = "rustwebservice"
+version = "0.1.0"
+authors = ["jaya-p"]
+edition = "2018"
+
+[dependencies]
