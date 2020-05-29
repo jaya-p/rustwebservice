@@ -1,7 +1,11 @@
 [package]
 name = "rustwebservice"
-version = "0.1.0"
+version = "0.2.0"
 authors = ["jaya-p"]
 edition = "2018"
 
 [dependencies]
+# Hyper used for HTTP server library
+hyper = "0.13"
+# Tokio runtime for Hyper
+tokio = { version = "0.2", features = ["full"] }
