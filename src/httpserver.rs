@@ -3,16 +3,24 @@ use hyper::{Body, Request, Response, Server};
 use std::net::SocketAddr;
 use super::helloworld;
 
-async fn helloworldwebservice(_req: Request<Body>) -> Result<Response<Body>, hyper::Error> {
+// helloworldwebservice wraps helloworld() as hyper http service
+//  helloworldwebservice is async (runs as non-blocking task) and private
+async fn helloworldwebservice(_req: Request<Body>) 
+    -> Result<Response<Body>, hyper::Error> {
   Ok(Response::new(Body::from(helloworld::helloworld())))
 }
 
+// httpserver provides http server function
+//   httpserver is async (runs as non-blocking task) and public
 pub async fn httpserver(addr: SocketAddr) {
+  // server_future specifies server configuration 
+  //   and service to be run (in this case, helloworldwebservice())
   let server_future = Server::bind(&addr)
     .serve(make_service_fn(|_| async {
       Ok::<_, hyper::Error>(service_fn(helloworldwebservice))
     }));
   
+  // server_future runs here
   println!("helloworld webserver is running");
   let r = server_future.await;
   if r.is_err() {
