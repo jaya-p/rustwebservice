@@ -20,10 +20,39 @@ pub async fn httpserver(addr: SocketAddr) {
       Ok::<_, hyper::Error>(service_fn(helloworldwebservice))
     }));
   
-  // server_future runs here
+  // server_future runs here, with error handling defined
   println!("helloworld webserver is running");
   let r = server_future.await;
   if r.is_err() {
     eprintln!("helloworld webserver error: {}", r.err().unwrap());
   }
 }
+
+// #[cfg(test)] is attribute marker for test module
+#[cfg(test)]
+mod tests {
+  // importing names from outer (for mod tests) scope.
+  use super::*;
+  use tokio::runtime::Runtime;
+
+  // #[test] is attribute marker for test function
+  #[test]
+  fn test_httpserver() -> Result<(), reqwest::Error> {
+    
+    // use tokio runtime for running httpserver
+    // https://docs.rs/tokio/0.2.21/tokio/runtime/struct.Runtime.html
+    let rt = Runtime::new().unwrap();
+    rt.spawn(async {
+      let sockaddr = SocketAddr::from(([127, 0, 0, 1], 8080));
+      httpserver(sockaddr).await;
+    });
+    
+    std::thread::sleep(std::time::Duration::from_secs(5));
+
+    let resp = reqwest::blocking::get("http://localhost:8080/")?.text()?;
+    assert_eq!(resp, "Hello World");
+
+    Ok(())
+  }
+}
+
