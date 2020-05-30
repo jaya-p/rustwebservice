@@ -11,7 +11,7 @@ use std::net::SocketAddr;
 #[tokio::main]
 async fn main() {
     // define socket (IP + Port) address for http server to listen to
-    let addr = SocketAddr::from(([127, 0, 0, 1], 8080));
+    let addr = SocketAddr::from(([0, 0, 0, 0], 8080));
 
     // run http server on above socket address
     rustwebservice::httpserver::httpserver(addr).await;
