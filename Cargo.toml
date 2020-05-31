@@ -5,9 +5,11 @@ authors = ["jaya-p"]
 edition = "2018"
 
 [dependencies]
-# Hyper used for HTTP server library
-hyper = "0.13"
-# Tokio runtime for Hyper
+# hyper used for HTTP server library
+hyper = "0.13.6"
+# tokio runtime for Hyper
 tokio = { version = "0.2", features = ["full"] }
-# Unit testing
-reqwest = { version = "0.10.4", features = ["blocking"] }
+# serde_json serialize and deserialize json for REST
+serde_json = "1.0"
+# unit testing
+reqwest = { version = "0.10.6", features = ["blocking"] }

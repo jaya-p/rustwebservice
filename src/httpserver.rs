@@ -1,3 +1,5 @@
+// test: cargo test test_httpserver
+
 use hyper::service::{make_service_fn, service_fn};
 use hyper::{Body, Request, Response, Server};
 use std::net::SocketAddr;
@@ -37,6 +39,7 @@ mod tests {
 
   // #[test] is attribute marker for test function
   #[test]
+  #[ignore = "only 1 tokio runtime can be run. and it is used by restapi test"]
   fn test_httpserver() -> Result<(), reqwest::Error> {
     
     // use tokio runtime for running httpserver
@@ -55,4 +58,3 @@ mod tests {
     Ok(())
   }
 }
-

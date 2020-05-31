@@ -5,5 +5,9 @@
 pub mod helloworld;
 
 // httpserver module prepares "helloworld" String as http service
-//  and runs http server with helloworld http service
+//  and runs it with helloworld http service
 pub mod httpserver;
+
+// restapihttpserver module prepares "helloworld" String as REST API 
+//  http service and runs it with helloworld http service
+pub mod restapihttpserver;
