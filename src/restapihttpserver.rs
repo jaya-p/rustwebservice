@@ -45,7 +45,7 @@ async fn statusnotfoundwebservice(_req: Request<Body>)
     -> Result<Response<Body>, hyper::Error> {
   Ok(Response::builder()
     .status(StatusCode::NOT_FOUND)
-    .body(Body::from(String::from("Your requested method (DELETE) is not found")))
+    .body(Body::from(String::from("404 Not Found")))
     .unwrap())
 }
 
@@ -145,7 +145,7 @@ mod tests {
 
     let client = reqwest::blocking::Client::new();
     let resp = client.delete("http://localhost:8080/api/v1/helloworld").send()?;
-    assert_eq!(resp.text()?, "Your requested method (DELETE) is not found");
+    assert_eq!(resp.text()?, "404 Not Found");
 
     Ok(())
   }

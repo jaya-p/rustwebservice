@@ -22,4 +22,4 @@ RUN cargo build --release
 EXPOSE 8080
 
 # Run the application
-CMD ["target/release/rustwebservice"]
+CMD ["target/release/restapiwebservice"]

@@ -3,6 +3,15 @@ name = "rustwebservice"
 version = "0.3.0"
 authors = ["jaya-p"]
 edition = "2018"
+default-run = "restapiwebservice"
+
+[[bin]]
+name = "webservice"
+path = "src/main.rs"
+
+[[bin]]
+name = "restapiwebservice"
+path = "src/mainrestapi.rs"
 
 [dependencies]
 # hyper used for HTTP server library
