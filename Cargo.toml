@@ -5,13 +5,23 @@ authors = ["jaya-p"]
 edition = "2018"
 default-run = "restapiwebservice"
 
+[lib]
+# with this name, this lib is referred to rustwebservice package in source code
+#   and resulted lib file is librustwebservice.rlib
+name = "rustwebservice" 
+path = "src/lib.rs" 
+
+[[bin]]
+name = "cli"
+path = "src/bin/maincli.rs"
+
 [[bin]]
 name = "webservice"
-path = "src/main.rs"
+path = "src/bin/mainweb.rs"
 
 [[bin]]
 name = "restapiwebservice"
-path = "src/mainrestapi.rs"
+path = "src/bin/mainrestapi.rs"
 
 [dependencies]
 # hyper used for HTTP server library
