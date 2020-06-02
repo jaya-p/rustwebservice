@@ -1,6 +1,6 @@
 # Build: docker build -t djayap/rustwebservice -f Multistage.Dockerfile .
 #         && docker images
-# Run: docker run -p 8080:8080 djayap/rustwebservice // docker run -p <host-port>:<container-port> <image-name>
+# Run: docker run --rm -p 8080:8080 djayap/rustwebservice // docker run -p <host-port>:<container-port> <image-name>
 # Test: curl http://localhost:8080/
 
 # STAGE 1 is to build the binary

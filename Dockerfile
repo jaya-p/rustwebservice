@@ -1,6 +1,6 @@
 # Build: docker build -t rustwebservice . 
 #         && docker images
-# Run: docker run -p 8080:8080 rustwebservice // docker run -p <host-port>:<container-port> <image-name>
+# Run: docker run --rm -p 8080:8080 rustwebservice // docker run -p <host-port>:<container-port> <image-name>
 # Test: curl http://localhost:8080/
 
 # Use rust-based image for container; rustc version 1.43.1
