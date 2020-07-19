@@ -1,0 +1,7 @@
+image: "rust:1.43.1"
+
+# Use cargo to test the project
+test:cargo:
+  script:
+    - rustc --version && cargo --version  # Print version info for debugging
+    - cargo test --workspace --verbose
